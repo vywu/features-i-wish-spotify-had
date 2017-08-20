@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 
+
 //Import other folders into the app so they can be used
 const config = require("./config/database");
 const paths = require('./routes/path');
@@ -42,14 +43,21 @@ app.use(cookieParser());
 
 //Set static folder: now the browser will automatically search here for static files such as html pages, image files and
 // css scripts.
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public/src')));
 
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PATCH, DELETE, OPTIONS');
+    // intercept OPTIONS method
+    if ('OPTIONS' == req.method) {
+        res.send(200);
+    }
+    else{
     next();
+    }
 });
+
 app.use('/',paths);
 app.use(cors());
 

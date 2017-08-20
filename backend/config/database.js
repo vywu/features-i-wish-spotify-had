@@ -2,6 +2,6 @@
 //In this case, we export the location of the database.
 
 module.exports = {
-    database: 'mongodb://localhost/goldfish',
+    database: 'mongodb://localhost/fiwsh',
     secret: 'yoursecret'
 }
