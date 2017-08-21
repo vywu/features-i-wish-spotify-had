@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Headers,Response,URLSearchParams} from '@angular/http';
+import {AuthenticationService} from './authentication.service';
+
 import 'rxjs/RX';
 import {Observable} from "rxjs";
 
@@ -10,10 +12,12 @@ import {Observable} from "rxjs";
 })
 export class AuthenticationComponent implements OnInit {
 
-  constructor(private http:Http) {
+  constructor(private AuthService: AuthenticationService) {
   }
 
-
+  login(){
+    return this.AuthService.login()
+  }
   ngOnInit() {
   }
 
