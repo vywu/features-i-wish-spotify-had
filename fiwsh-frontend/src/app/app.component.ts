@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AuthenticationComponent} from './authentication/authentication.component';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  public isLoggedIn: boolean;
+  constructor()
+  {
+    this.isLoggedIn=false;
+  }
+  statusUpdate(event:boolean){
+    this.isLoggedIn=true;
+  }
+
+
 }

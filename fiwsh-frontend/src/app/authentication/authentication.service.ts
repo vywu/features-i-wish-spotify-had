@@ -7,9 +7,8 @@ export class AuthenticationService {
   constructor(http: Http) {
   }
 
-  logout(){
-    localStorage.clear();
-  }
+
+
 
   login(){
     console.log('called');
@@ -19,14 +18,42 @@ export class AuthenticationService {
     var scope= 'user-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private ugc-image-upload user-follow-read user-library-read user-read-private user-top-read streaming';
     var authUrl='https://accounts.spotify.com/authorize?'+'client_id='+client_id+'&response_type='+response_type+'&redirect_uri='+redirect_uri+'&scope='+scope;
     console.log(authUrl);
-    window.open(authUrl);
-    return
+    window.open(authUrl,"_self");
+    console.log(window.location.hash.substring(1));
     // return this.http.get(authUrl)
     //   .map((response: Response)=>response.json())
     //   .catch((error: Response)=>Observable.throw(error.json()));
   }
 
+  logout(){
+    localStorage.clear();
+  }
 
+
+  getAccessToken(){
+    var hashParams={};
+    var q=window.location.hash.substring(1);
+    var e, r = /([^&;=]+)=?([^&;]*)/g;
+    if(q!='')
+    {
+      while (e = r.exec(q)) {
+        hashParams[e[1]] = decodeURIComponent(e[2]);
+      }
+      this.setAccessToken(hashParams);
+      return true;
+
+    }
+    // var expires = 0 + localStorage.getItem('pa_expires');
+    // if ((new Date()).getTime() > expires) {
+    // return '';}
+    // var token = localStorage.getItem('pa_token');
+    // console.log(token);
+    // return token;
+}
+
+  setAccessToken(hashParams:any){
+    localStorage.setItem("access_token",hashParams.access_token);
+  }
 
 
 
