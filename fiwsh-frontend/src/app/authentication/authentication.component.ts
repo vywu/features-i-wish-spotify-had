@@ -25,17 +25,13 @@ export class AuthenticationComponent implements OnInit {
   }
   ngOnInit() {
       if(this.AuthService.getAccessToken()){
-       this.userLoggedIn.emit(true);
+       localStorage.setItem("loggedin","true");
       }
       // this.AuthService.getUsername();
 
   }
 
-  isLoggedIn(status: boolean){
-    const _status=status;
-    return _status;
 
-  }
 
 
 

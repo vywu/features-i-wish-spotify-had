@@ -20,6 +20,10 @@ export class SpotifyAPIService {
     return this.http.get(this.apiUrl+'/player/recently-played',{headers:this.headers}).map((response:Response)=>response.json())
   }
 
+  getCurrentTrack(){
+    return this.http.get(this.apiUrl+'/player/currently-playing',{headers:this.headers}).map((response:Response)=>response.json()).subscribe(data=>console.log(data.item));
+  }
+
   pauseCurrentTrack(){
     return this.http.put(this.apiUrl+'/player/pause',null,{headers:this.headers}).map((response:Response)=>response.json()).subscribe(data=>console.log(data));
   }

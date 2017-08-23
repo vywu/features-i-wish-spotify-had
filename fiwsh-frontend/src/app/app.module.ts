@@ -9,11 +9,15 @@ import { UserComponent } from './user/user.component';
 import {UserService} from './user/user.service';
 import {SpotifyAPIService} from './spotify-api.service';
 import {routing} from "./app.routing";
+import { LyricsComponent } from './lyrics/lyrics.component';
+import { TrackComponent } from './track/track.component';
 @NgModule({
   declarations: [
     AppComponent,
     AuthenticationComponent,
-    UserComponent
+    UserComponent,
+    LyricsComponent,
+    TrackComponent
   ],
   imports: [
     BrowserModule,HttpModule,routing

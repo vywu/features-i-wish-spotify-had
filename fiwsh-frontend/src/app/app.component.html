@@ -1,3 +1,4 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<app-authentication (userLoggedIn)="statusUpdate($event)"*ngIf="!isLoggedIn"></app-authentication>
-<app-user *ngIf="isLoggedIn"></app-user>
+<app-authentication *ngIf="!isLoggedIn()"></app-authentication>
+<app-user *ngIf="isLoggedIn()"></app-user>
+<app-lyrics *ngIf="isLoggedIn()"></app-lyrics>

@@ -29,4 +29,7 @@ export class UserService {
   skipTrack(){
     this.apiService.skipCurrentTrack();
   }
+  currentTrack(){
+    this.apiService.getCurrentTrack();
+  }
 }

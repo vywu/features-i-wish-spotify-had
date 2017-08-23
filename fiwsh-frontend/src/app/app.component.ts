@@ -8,14 +8,13 @@ import {AuthenticationComponent} from './authentication/authentication.component
 })
 export class AppComponent {
   title = 'app';
-  public isLoggedIn: boolean;
   constructor()
   {
-    this.isLoggedIn=false;
   }
-  statusUpdate(event:boolean){
-    this.isLoggedIn=true;
+  isLoggedIn(){
+    return (localStorage.getItem("loggedin")=="true")
   }
+
 
 
 }

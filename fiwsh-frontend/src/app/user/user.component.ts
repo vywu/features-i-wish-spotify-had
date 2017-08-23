@@ -26,6 +26,9 @@ export class UserComponent implements OnInit {
   nextTrack(){
     this.userService.skipTrack();
   }
+  currentTrack(){
+    this.userService.currentTrack();
+  }
   greetUser(){
     var date = new Date();
     var hours = date.getHours();
