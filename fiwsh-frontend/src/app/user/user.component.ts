@@ -8,11 +8,23 @@ import { UserService } from './user.service';
 export class UserComponent implements OnInit {
 
   constructor(private userService: UserService) { }
-  username=this.userService.getUsername();
+  username=localStorage.getItem("username");
   ngOnInit() {
     console.log("reached");
 
 
+  }
+  getTracks(){
+    this.userService.getTracks();
+  }
+  pauseTrack(){
+    this.userService.pauseTrack();
+  }
+  startTrack(){
+    this.userService.startTrack();
+  }
+  nextTrack(){
+    this.userService.skipTrack();
   }
   greetUser(){
     var date = new Date();

@@ -5,12 +5,28 @@ import {SpotifyAPIService} from '../spotify-api.service';
 export class UserService {
 
   constructor(private apiService: SpotifyAPIService) {
+    this.getUsername();
   }
   getUsername(){
     if(localStorage.getItem("username")==null)
+      console.log("yepit'sempty");
       this.apiService.getUsername();
-    return localStorage.getItem("username");
-}
+      console.log("done");
+    }
 
+  getTracks(){
+    this.apiService.getRecentTracks().subscribe(data=>{console.log(data)});
+  }
 
+  pauseTrack(){
+    this.apiService.pauseCurrentTrack();
+  }
+
+  startTrack(){
+    this.apiService.startCurrentTrack();
+  }
+
+  skipTrack(){
+    this.apiService.skipCurrentTrack();
+  }
 }
