@@ -2,8 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Http, Headers,Response,URLSearchParams} from '@angular/http';
 import {AuthenticationService} from './authentication.service';
 
-import 'rxjs/RX';
-import {Observable} from "rxjs";
+
 
 @Component({
   selector: 'app-authentication',
