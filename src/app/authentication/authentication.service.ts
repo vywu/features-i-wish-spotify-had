@@ -14,7 +14,7 @@ export class AuthenticationService {
     console.log('called');
     var client_id='990908af7650443799342f406c37de12';
     var response_type="token";
-    var redirect_uri="https://fiwsh.herokuapp.com/";
+    var redirect_uri="http://localhost:4200";
     var scope= 'user-read-private user-read-email user-read-recently-played playlist-read-collaborative playlist-modify-public playlist-modify-private ugc-image-upload user-follow-read user-library-read user-read-private user-top-read streaming user-read-currently-playing user-modify-playback-state';
     var authUrl='https://accounts.spotify.com/authorize?'+'client_id='+client_id+'&response_type='+response_type+'&redirect_uri='+redirect_uri+
     (scope ? '&scope=' + encodeURIComponent(scope) : '');
@@ -53,6 +53,7 @@ export class AuthenticationService {
 }
 
   setAccessToken(hashParams:any){
+    console.log(hashParams);
     localStorage.setItem("access_token",hashParams.access_token);
   }
 

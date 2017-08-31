@@ -16,7 +16,7 @@ export class UserService {
     }
 
   getTracks(){
-    this.apiService.getRecentTracks().subscribe(data=>{console.log(data)});
+    return this.apiService.getRecentTracks().do(data=>{console.log(data)});
   }
 
   pauseTrack(){

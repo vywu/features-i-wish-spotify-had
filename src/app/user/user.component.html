@@ -4,3 +4,9 @@
 <button (click)="startTrack()">Resume</button>
 <button (click)="nextTrack()">Next</button>
 <button (click)="currentTrack()">Now</button>
+<p>Recently played</p>
+<ul>
+  <li *ngFor="let track of recentTracks">
+    {{track.track.name}}
+  </li>
+</ul>

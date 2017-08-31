@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './user.service';
+
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -14,8 +15,11 @@ export class UserComponent implements OnInit {
 
 
   }
+  public recentTracks:any;
   getTracks(){
-    this.userService.getTracks();
+    this.userService.getTracks().subscribe(data=>this.recentTracks=data.items);
+    console.log(this.recentTracks);
+
   }
   pauseTrack(){
     this.userService.pauseTrack();
