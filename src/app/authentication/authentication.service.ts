@@ -6,7 +6,7 @@ export class AuthenticationService {
 
   constructor(http: Http) {
   }
-  production=true;
+  production=false;
 
 
 

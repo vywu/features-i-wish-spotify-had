@@ -1,0 +1,12 @@
+.player{
+  height:80px;
+  position:fixed;
+  bottom:0%;
+  width:100%;
+  background-color:whitesmoke;
+  padding-top:20px;
+  padding-bottom:20px;
+}
+h1{
+  color:whitesmoke;
+}

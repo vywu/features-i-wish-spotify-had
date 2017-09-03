@@ -1,12 +1,12 @@
 <h1>{{greetUser()}}</h1>
+
+<div class="player">
 <button (click)="getTracks()">Get Recent Played</button>
 <button (click)="pauseTrack()">Pause</button>
 <button (click)="startTrack()">Resume</button>
 <button (click)="nextTrack()">Next</button>
 <button (click)="currentTrack()">Now</button>
-<p>Recently played</p>
-<ul>
-  <li *ngFor="let track of recentTracks">
-    {{track.track.name}}
-  </li>
-</ul>
+  <app-lyrics></app-lyrics>
+</div>
+
+<app-tracklist [tracklist]="recentTracks"></app-tracklist>

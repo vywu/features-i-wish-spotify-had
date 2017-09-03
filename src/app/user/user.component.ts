@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './user.service';
-
+import {TracklistComponent} from '../tracklist/tracklist.component';
+import {TrackComponent} from '../track/track.component';
+import {Track} from '../track/track.model';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -12,14 +14,23 @@ export class UserComponent implements OnInit {
   username=localStorage.getItem("username");
   ngOnInit() {
     console.log("reached");
+  }
+  public recentTracks:Track[]=[];
+  parseTracks(tracks:any){
 
+    for (let track of tracks)
+    {
+      var artists:string[]=[];
+      for(let artist of track.track.artists)
+      {
+        artists.push(artist.name)
+      }
+      var newtrack=new Track(track.track.name,artists,track.track.duration_ms);
+      this.recentTracks.push(newtrack);}
 
   }
-  public recentTracks:any;
   getTracks(){
-    this.userService.getTracks().subscribe(data=>this.recentTracks=data.items);
-    console.log(this.recentTracks);
-
+    this.userService.getTracks().subscribe(data=>this.parseTracks(data.items));
   }
   pauseTrack(){
     this.userService.pauseTrack();
