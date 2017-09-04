@@ -1,10 +1,27 @@
 html,body{margin:0;padding:0;height:100%;width:100%;
   background: #dd5e89; /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #dd5e89, #f7bb97); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #dd5e89, #f7bb97); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  overflow: hidden;}
+  background: linear-gradient(to right, #dd5e89, #f7bb97); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  }
 @font-face{
   font-family: Montserrat;
   src:url("/assets/Montserrat-Regular.otf") format("opentype");
 
+}
+button{
+  background-color:Transparent;
+  background-repeat: no-repeat;
+  border:3px solid whitesmoke;
+  border-radius:25px;
+  font-size:17px;
+  padding:10px;
+  font-family:Montserrat;
+  -webkit-animation: fadein 10s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 2s; /* Firefox < 16 */
+  -ms-animation: fadein 2s; /* Internet Explorer */
+  -o-animation: fadein 2s; /* Opera < 12.1 */
+  animation: fadein 2s;
+}
+button:hover{
+  background-color:whitesmoke;
+  color: #dd5e89;
 }

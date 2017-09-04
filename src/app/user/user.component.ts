@@ -12,8 +12,9 @@ export class UserComponent implements OnInit {
 
   constructor(private userService: UserService) { }
   ngOnInit() {
-   this.userService.getUsername().subscribe(data=>this.greetUser(data.display_name));
+    this.userService.getUsername().subscribe(data=>localStorage.setItem("username",data.display_name));
   }
+
   public recentTracks:Track[]=[];
   parseTracks(tracks:any){
 
@@ -43,7 +44,8 @@ export class UserComponent implements OnInit {
   currentTrack(){
     this.userService.currentTrack();
   }
-  greetUser(username:string){
+  greetUser(){
+    var username=localStorage.getItem("username");
     var date = new Date();
     var hours = date.getHours();
     var greeting;

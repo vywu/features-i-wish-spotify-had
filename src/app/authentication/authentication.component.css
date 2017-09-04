@@ -1,3 +1,6 @@
+html,body{
+  overflow:hidden;
+}
 .login{
   background-color:Transparent;
   background-repeat: no-repeat;

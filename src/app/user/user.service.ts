@@ -9,8 +9,6 @@ export class UserService {
 
   }
   getUsername(){
-    if(localStorage.getItem("username")==null)
-      console.log("yepit'sempty");
       return this.apiService.getUsername();
     }
 
