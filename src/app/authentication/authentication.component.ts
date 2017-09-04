@@ -11,12 +11,15 @@ import {AuthenticationService} from './authentication.service';
 })
 export class AuthenticationComponent implements OnInit {
   @Output() userLoggedIn=new EventEmitter<boolean>();
-  constructor(private AuthService: AuthenticationService) {
+  constructor(private AuthService: AuthenticationService,private http:Http) {
 
   }
 
   login(){
-    return this.AuthService.login();
+    // return this.AuthService.login();
+    console.log("login");
+    window.open("http://localhost:3000/login",'_self');
+
 
   }
   getAccessToken(){

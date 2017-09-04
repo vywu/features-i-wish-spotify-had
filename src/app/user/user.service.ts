@@ -6,13 +6,12 @@ import {SpotifyAPIService} from '../spotify-api.service';
 export class UserService {
 
   constructor(private apiService: SpotifyAPIService) {
-    this.getUsername();
+
   }
   getUsername(){
     if(localStorage.getItem("username")==null)
       console.log("yepit'sempty");
-      this.apiService.getUsername();
-      console.log("done");
+      return this.apiService.getUsername();
     }
 
   getTracks(){

@@ -11,9 +11,8 @@ import {Track} from '../track/track.model';
 export class UserComponent implements OnInit {
 
   constructor(private userService: UserService) { }
-  username=localStorage.getItem("username");
   ngOnInit() {
-    console.log("reached");
+   this.userService.getUsername().subscribe(data=>this.greetUser(data.display_name));
   }
   public recentTracks:Track[]=[];
   parseTracks(tracks:any){
@@ -44,21 +43,21 @@ export class UserComponent implements OnInit {
   currentTrack(){
     this.userService.currentTrack();
   }
-  greetUser(){
+  greetUser(username:string){
     var date = new Date();
     var hours = date.getHours();
     var greeting;
     if (hours > 6 && hours < 12) {
-      greeting = "Morning, " + this.username + "!";
+      greeting = "Morning, " + username + "!";
     }
     else if (hours >= 12 && hours <= 17) {
-      greeting = "Good afternoon, " + this.username + "!";
+      greeting = "Good afternoon, " + username + "!";
     }
     else if (hours > 17 && hours < 23) {
-      greeting = "Good evening, " + this.username + ". How's your day?";
+      greeting = "Good evening, " + username + ". How's your day?";
     }
     else {
-      greeting = "Go to bed " + this.username + "!";
+      greeting = "Go to bed " + username + "!";
     }
 
     return greeting;

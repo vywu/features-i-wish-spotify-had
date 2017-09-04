@@ -13,8 +13,8 @@ export class SpotifyAPIService {
 
   getUsername(){
     var username:string;
-    this.http.get(this.apiUrl,{
-      headers:this.headers}).map((response:Response)=>response.json()).subscribe(data=>{localStorage.setItem("username",data.display_name)});
+    return this.http.get(this.apiUrl,{
+      headers:this.headers}).map((response:Response)=>response.json());
   }
 
   getRecentTracks(){
