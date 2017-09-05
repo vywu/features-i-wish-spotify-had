@@ -2,9 +2,9 @@
 
 <div class="player">
 <button (click)="getTracks()">Get Recent Played</button>
-<button (click)="pauseTrack()">Pause</button>
-<button (click)="startTrack()">Resume</button>
-<button (click)="nextTrack()">Next</button>
+  <button (click)="previousTrack()"><img id="previous" src="../../assets/next.png" height="35" weight="35"></button>
+  <button (click)="playAndPause()" style=" margin-bottom:20px"><img *ngIf="paused" src="../../assets/play.png" height="50" width="50" ><img *ngIf="!paused" src="../../assets/pause.png" height="50" width="50"></button>
+<button (click)="nextTrack()"><img src="../../assets/next.png" height="35" weight="35"></button>
 <button (click)="currentTrack()">Now</button>
   <app-lyrics></app-lyrics>
 </div>

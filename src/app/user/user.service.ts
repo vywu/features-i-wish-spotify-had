@@ -17,11 +17,11 @@ export class UserService {
   }
 
   pauseTrack(){
-    this.apiService.pauseCurrentTrack();
+    return this.apiService.pauseCurrentTrack();
   }
 
   startTrack(){
-    this.apiService.startCurrentTrack();
+    return this.apiService.startCurrentTrack();
   }
 
   skipTrack(){
@@ -29,5 +29,11 @@ export class UserService {
   }
   currentTrack(){
     this.apiService.getCurrentTrack();
+  }
+  previousTrack(){
+    this.apiService.previousTrack();
+  }
+  currentPlayback(){
+    return this.apiService.getPlayback();
   }
 }

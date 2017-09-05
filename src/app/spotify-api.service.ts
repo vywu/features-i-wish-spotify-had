@@ -26,16 +26,24 @@ export class SpotifyAPIService {
   }
 
   pauseCurrentTrack(){
-    return this.http.put(this.apiUrl+'/player/pause',null,{headers:this.headers}).map((response:Response)=>response.json()).subscribe(data=>console.log(data));
+    return this.http.put(this.apiUrl+'/player/pause',null,{headers:this.headers}).map((response:Response)=>response.json());
   }
 
   startCurrentTrack(){
 
-    return this.http.put(this.apiUrl+'/player/play',null,{headers:this.headers}).map((response:Response)=>response.json()).subscribe(data=>console.log(data));
+    return this.http.put(this.apiUrl+'/player/play',null,{headers:this.headers}).map((response:Response)=>response.json());
   }
 
   skipCurrentTrack(){
     return this.http.post(this.apiUrl+'/player/next',null,{headers:this.headers}).map((response:Response)=>response.json()).subscribe(data=>console.log(data));
+  }
+
+  previousTrack() {
+    return this.http.post(this.apiUrl + '/player/previous', null, {headers: this.headers}).map((response: Response) => response.json()).subscribe(data => console.log(data));
+  }
+
+  getPlayback(){
+    return this.http.get(this.apiUrl+'/player',{headers:this.headers}).map((response:Response)=>response.json());
   }
 }
 

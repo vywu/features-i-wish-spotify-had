@@ -14,7 +14,7 @@ export class UserComponent implements OnInit {
   ngOnInit() {
     this.userService.getUsername().subscribe(data=>localStorage.setItem("username",data.display_name));
   }
-
+  public paused=true;
   public recentTracks:Track[]=[];
   parseTracks(tracks:any){
 
@@ -29,20 +29,31 @@ export class UserComponent implements OnInit {
       this.recentTracks.push(newtrack);}
 
   }
+  playAndPause(){
+    this.userService.currentPlayback().subscribe(data=>{
+
+    if(!data.device.is_active){console.log("can't find the device");}
+    else if (data.is_playing){this.pauseTrack();}
+    else{this.startTrack();}});
+  }
   getTracks(){
     this.userService.getTracks().subscribe(data=>this.parseTracks(data.items));
   }
+
   pauseTrack(){
-    this.userService.pauseTrack();
+    this.userService.pauseTrack().subscribe(data=>this.paused=true);
   }
   startTrack(){
-    this.userService.startTrack();
+    this.userService.startTrack().subscribe(data=>this.paused=false);
   }
   nextTrack(){
     this.userService.skipTrack();
   }
   currentTrack(){
     this.userService.currentTrack();
+  }
+  previousTrack(){
+    this.userService.previousTrack();
   }
   greetUser(){
     var username=localStorage.getItem("username");
