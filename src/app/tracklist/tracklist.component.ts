@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { TrackComponent } from '../track/track.component';
 import { Track } from '../track/track.model'
 
@@ -8,11 +8,15 @@ import { Track } from '../track/track.model'
   styleUrls: ['./tracklist.component.css']
 })
 export class TracklistComponent implements OnInit {
-
-  constructor() { }
+  scrollCallback;
+  constructor() {}
   @Input() tracklist:Track[];
+
+
   ngOnInit() {
   }
+  callParent(){
 
+  }
 
 }

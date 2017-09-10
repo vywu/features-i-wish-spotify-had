@@ -6,10 +6,11 @@ export class Track{
   public artists: string[];
 
   public length: string;
-  constructor(name:string,artists:string[],length:string){
+  public id:string
+  constructor(name:string,artists:string[],length:string,id:string){
     this.name=name;
     this.artists=artists;
-
+    this.id=id;
     this.length=length;
   };
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Http, Headers, Response} from '@angular/http';
+import {Http, Headers, Response, URLSearchParams, RequestOptions} from '@angular/http';
 import 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 @Injectable()
@@ -44,6 +44,20 @@ export class SpotifyAPIService {
 
   getPlayback(){
     return this.http.get(this.apiUrl+'/player',{headers:this.headers}).map((response:Response)=>response.json());
+  }
+
+  getSavedTracksInit(){
+    let params=new URLSearchParams();
+    params.append("limit","50");
+    params.append("offset","0");
+    let options=new RequestOptions({headers:this.headers,params:params});
+    return this.http.get(this.apiUrl+'/tracks',options).map((response:Response)=>response.json());
+  }
+
+  getSavedTracks(url:string){
+    let params=new URLSearchParams();
+    return this.http.get(url,{headers:this.headers}).map((response:Response)=>response.json());
+
   }
 }
 
