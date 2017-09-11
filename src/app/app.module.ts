@@ -16,7 +16,6 @@ import { PlaylistComponent } from './playlist/playlist.component';
 import { SavedmusicComponent } from './savedmusic/savedmusic.component';
 import { FormsModule} from '@angular/forms';
 
-import { ExplicitPipe } from './explicit.pipe';
 import { SearchPipe } from './search.pipe';
 @NgModule({
   declarations: [

@@ -3,7 +3,7 @@ import {SpotifyAPIService} from '../spotify-api.service';
 import {TracklistComponent} from '../tracklist/tracklist.component';
 import {TrackComponent} from '../track/track.component';
 import {Track} from '../track/track.model';
-import {ExplicitPipe} from '../explicit.pipe'
+
 @Component({
   selector: 'app-savedmusic',
   templateUrl: './savedmusic.component.html',
