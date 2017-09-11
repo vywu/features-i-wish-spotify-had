@@ -42,7 +42,8 @@ var generateRandomString = function(length) {
 
 const client_id="990908af7650443799342f406c37de12";
 const client_secret="a4486f82c3174d3bb9c66fa4cf910c3d";
-var redirect_uri="http://localhost:3000/callback";
+var redirect_uri_dev="http://localhost:3000/callback";
+var redirect_uri_prod="https://fiwsh.herokuapp.com/callback";
 var state_key="spotify_auth_state";
 
 
@@ -69,11 +70,13 @@ app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PATCH, DELETE, OPTIONS');
     next();
 });
+var production=true;
 
 app.get('/login',function(req,res){
   var state=generateRandomString(16);
   res.cookie(state_key,state);
   var scope= 'user-read-private user-read-email user-read-recently-played playlist-read-collaborative playlist-modify-public playlist-modify-private ugc-image-upload user-follow-read user-library-read user-read-private user-top-read streaming user-read-currently-playing user-modify-playback-state user-read-playback-state';
+  if (this.production===false){
   res.redirect('https://accounts.spotify.com/authorize?'+querystring.stringify({
     response_type:'code',
       client_id:client_id,
@@ -81,7 +84,17 @@ app.get('/login',function(req,res){
       redirect_uri:redirect_uri,
       state:state
     }));
+  }else{
+    res.redirect('https://accounts.spotify.com/authorize?'+querystring.stringify({
+        response_type:'code',
+        client_id:client_id,
+        scope:scope,
+        redirect_uri:redirect_uri_prod,
+        state:state
+      }));
+  }
 });
+
 
 app.get('/callback',function(req,res){
   var code=req.query.code||null;
