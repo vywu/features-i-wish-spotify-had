@@ -14,6 +14,10 @@ import { InfiniteScrollerDirective } from './infinite-scroller.directive';
 import { PlaybackComponent } from './playback/playback.component';
 import { PlaylistComponent } from './playlist/playlist.component';
 import { SavedmusicComponent } from './savedmusic/savedmusic.component';
+import { FormsModule} from '@angular/forms';
+
+import { ExplicitPipe } from './explicit.pipe';
+import { SearchPipe } from './search.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,10 +28,12 @@ import { SavedmusicComponent } from './savedmusic/savedmusic.component';
     InfiniteScrollerDirective,
     PlaybackComponent,
     PlaylistComponent,
-    SavedmusicComponent
+    SavedmusicComponent,
+    SearchPipe
+
   ],
   imports: [
-    BrowserModule,HttpModule,routing
+    BrowserModule,HttpModule,routing,FormsModule
   ],
   providers: [AuthenticationService,SpotifyAPIService],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
 <div class="track">
-<div><label>{{track.name}}</label></div>
-<span *ngFor="let artist of track.artists">{{ artist }}  </span>
+<div><label>{{track.track.name}}</label></div>
+<span *ngFor="let artist of track.track.artists">{{ artist.name }}</span> <span>|| {{track.track.album.name}}</span>
 </div>

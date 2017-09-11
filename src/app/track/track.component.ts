@@ -10,7 +10,7 @@ import { Track } from './track.model';
 export class TrackComponent implements OnInit {
 
   constructor() { }
-  @Input() track:Track;
+  @Input() track:any;
 
   ngOnInit() {
   }

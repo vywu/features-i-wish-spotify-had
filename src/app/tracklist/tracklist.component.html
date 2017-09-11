@@ -4,4 +4,6 @@
   <!--immediateCallback="true"-->
   <!--[scrollCallback]="scrollCallback">-->
   <div>
-  <app-track *ngFor="let track of tracklist" [track]=track></app-track></div>
+    <input type="text" placeholder="Search" #queryElem (keyup)="0">
+    <app-track *ngFor="let item of (tracklist | SearchPipe:queryElem.value)" [track]=item></app-track></div>
+

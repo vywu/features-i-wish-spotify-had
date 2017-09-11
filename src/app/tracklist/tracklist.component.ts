@@ -10,7 +10,7 @@ import { Track } from '../track/track.model'
 export class TracklistComponent implements OnInit {
   scrollCallback;
   constructor() {}
-  @Input() tracklist:Track[];
+  @Input() tracklist:any[];
 
 
   ngOnInit() {

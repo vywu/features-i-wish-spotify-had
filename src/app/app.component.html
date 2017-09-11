@@ -1,6 +1,5 @@
 <section class="main">
 <app-authentication *ngIf="!isLoggedIn()"></app-authentication>
 <app-playback *ngIf="isLoggedIn()"></app-playback>
-<app-lyrics *ngIf="isLoggedIn()"></app-lyrics>
-<app-tracklist></app-tracklist><app-savedmusic *ngIf="isLoggedIn()"></app-savedmusic>
+  <app-savedmusic *ngIf="isLoggedIn()"></app-savedmusic>
 </section>
