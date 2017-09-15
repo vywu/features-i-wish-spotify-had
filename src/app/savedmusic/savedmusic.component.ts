@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {SpotifyAPIService} from '../spotify-api.service';
+import {SavedmusicService} from '../savedmusic.service';
 import {TracklistComponent} from '../tracklist/tracklist.component';
 import {TrackComponent} from '../track/track.component';
 import {Track} from '../track/track.model';
@@ -13,7 +14,7 @@ import {Track} from '../track/track.model';
 export class SavedmusicComponent implements OnInit {
   // savedMusic:Track[]=[];
   savedMusic:any[]=[];
-  constructor(private apiService:SpotifyAPIService) {
+  constructor(private apiService:SpotifyAPIService,private savedmusicService:SavedmusicService) {
   }
   // parseTracks(data:any){
   //   console.log(data);
@@ -53,6 +54,7 @@ export class SavedmusicComponent implements OnInit {
     if (this.savedMusic.length===0){
       var next="https://api.spotify.com/v1/me/tracks?offset=0&limit=50";
     this.getSavedMusicInit(next);}
+    this.savedmusicService.savedMusic=this.savedMusic;
 
   }
 

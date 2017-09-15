@@ -17,6 +17,7 @@ import { SavedmusicComponent } from './savedmusic/savedmusic.component';
 import { FormsModule} from '@angular/forms';
 
 import { SearchPipe } from './search.pipe';
+import {SavedmusicService} from "./savedmusic.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,7 @@ import { SearchPipe } from './search.pipe';
   imports: [
     BrowserModule,HttpModule,routing,FormsModule
   ],
-  providers: [AuthenticationService,SpotifyAPIService],
+  providers: [AuthenticationService,SpotifyAPIService,SavedmusicService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

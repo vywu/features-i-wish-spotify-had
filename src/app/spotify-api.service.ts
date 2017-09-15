@@ -10,7 +10,7 @@ export class SpotifyAPIService {
   token=localStorage.getItem("access_token");
 
   headers=new Headers({"Authorization":"Bearer "+this.token});
-
+  userId:string="";
   getUsername(){
     var username:string;
     return this.http.get(this.apiUrl,{
@@ -39,7 +39,7 @@ export class SpotifyAPIService {
   }
 
   previousTrack() {
-    return this.http.post(this.apiUrl + '/player/previous', null, {headers: this.headers}).map((response: Response) => response.json()).subscribe(data => console.log(data));
+    return this.http.post(this.apiUrl + '/player/previous', null, {headers: this.headers}).map((response: Response) => response.json()).subscribe(data =>{});
   }
 
   getPlayback(){
@@ -57,7 +57,23 @@ export class SpotifyAPIService {
   getSavedTracks(url:string){
     let params=new URLSearchParams();
     return this.http.get(url,{headers:this.headers}).map((response:Response)=>response.json());
+  }
 
+  createPlaylist(name:string){
+    this.headers.append("Content-Type","application/json");
+
+    const body={name:name};
+    return this.http.post("https://api.spotify.com/v1/users/"+this.userId+"/playlists",body,{headers:this.headers}).map((response:Response)=>response.json());
+  }
+
+  addTrackToPlaylist(id:any,tracks:string[]){
+    this.headers.append("Content-Type","application/json");
+    const body={uris:tracks};
+    this.http.post("https://api.spotify.com/v1/users/"+this.userId+"/playlists/"+id+"/tracks",body,{headers:this.headers}).map((response:Response)=>response.json()).subscribe(data=>console.log(data));
+  }
+
+  getUserId(){
+    return this.http.get(this.apiUrl,{headers:this.headers}).map((response:Response)=>response.json()).subscribe(data=>{this.userId=data.id;});
   }
 }
 

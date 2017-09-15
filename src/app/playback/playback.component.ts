@@ -13,6 +13,7 @@ export class PlaybackComponent implements OnInit {
   constructor(private apiService:SpotifyAPIService){}
   ngOnInit() {
     this.apiService.getUsername().subscribe(data=>{localStorage.setItem("username",data.display_name)});
+    this.apiService.getUserId();
   }
   public paused=true;
   public recentTracks:Track[]=[];
